@@ -6,7 +6,9 @@
   - 创建 `dev` 分支
 - **git branch -f dev \<some-commit>**
   - 那么 `dev` 分支上的代码就会和 `<some-commit>` 一样，并且历史记录也会是一样，即 `dev` 分支指向了 `<some-commit>`
-  - **（注意：`some-commit` 必须是其他分支的）**
+  - **注意：`some-commit` 必须是其他分支的**
+- **git branch -d dev**
+  - 删除 `dev` 分支
 
 ### git switch
 
@@ -34,8 +36,10 @@
 
 ### git rebase
 
-- **git rebase dev**
-  - 以 `dev` 分支 `HEAD` 为基准，将当前所在分支上的所有 `commit` 按顺序在 `dev` 分支上 `create commit`
+- **git rebase main dev**
+  - 以 `dev` 分支 `HEAD` 为基准，将 `main` 分支上的所有 `commit` 按顺序在 `dev` 分支上 `create commit`
+- **git rebase -i \<commit-one> \<commit-three>**
+  - 可对 `<commit-one>` 与`<commit-three>` 之间的提交进行排序、合并、删除等
 
 ### git reset
 
@@ -46,3 +50,39 @@
 
 - **git revert \<some-commit>**
   - 复制 `<some-commit>`，并将其指向当前 `HEAD` 的 `next commit`，某种意义上实现回退
+
+### git cherry-pick
+
+- **git cherry-pick \<some-commit> \<some-commit>....**
+  - cherry-pick：择 `commit` 挑选
+  - 即按顺序，依次 `create commit`
+  - **注意： `<some-commit>` 必须是其他分支的**
+
+### ~ 操作符
+
+- **git switch dev~**
+  - `~` 操作符，即相对引用
+  - 上面的命令会将 `dev` 分支的 `HEAD` 指向上一级父提交
+  - `~` 后可跟数字，`~2` 即代表指向上两次的父提交
+
+### git commit --amend
+
+- 修改上个 `commit` 所提交的信息
+
+### git pull --rebase
+
+- `git fetch` 与 `git rebase` 的缩写
+
+### git pull 的参数
+
+- **git pull origin main**
+  - `fetch` 远程 `main` 分支的 `commit` 到本地，然后 `merge` 给当前所在分支
+- **git pull origin main:foo**
+  - `fetch` 远程 `main` 分支的 `commit` 到本地，然后 `merge` 给本地的 `foo` 分支上
+
+### git push 的参数
+
+- **git push origin main**
+  - 将当前所在分支的所有 `commit`，push 给远程 `main` 分支，在 `main` 分支上依次 `create commit`
+- **git push origin foo:main**
+  - 将本地 `foo` 分支的所有 `commit`，push 给远程 `main` 分支，在 `main` 分支上依次 `create commit`
