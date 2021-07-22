@@ -55,7 +55,7 @@
 
 - **git cherry-pick \<some-commit> \<some-commit>....**
   - cherry-pick：择 `commit` 挑选
-  - 即按顺序，依次 `create commit`
+  - 即按顺序，依次 `create commit` 到本分支
   - **注意： `<some-commit>` 必须是其他分支的**
 
 ### ~ 操作符
