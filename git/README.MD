@@ -49,7 +49,7 @@
 ### git revert
 
 - **git revert \<some-commit>**
-  - 复制 `<some-commit>`，并将其指向当前 `HEAD` 的 `next commit`，某种意义上实现回退
+  - 撤销 `<some-commit>`，并生成当前 `HEAD` 的 `next commit`，某种意义上实现回退
 
 ### git cherry-pick
 
